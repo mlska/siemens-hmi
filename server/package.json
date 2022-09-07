@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "websocket-siemens-plc-server",
+  "description": "plc s7 connection, powered by WebSocket",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "nodes7": "github:plcpeople/nodeS7#next",
+    "socket.io": "^4.5.2"
+  }
+}
