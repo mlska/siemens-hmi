@@ -5,6 +5,7 @@ import { io, Socket } from "socket.io-client";
 // const socket: Socket = io("http://localhost:3001");
 import StoreProvider from "../store/StoreProvider";
 import Header from "../components/Header";
+import HomeScreen from "../components/HomeScreen";
 const Home: NextPage = () => {
   // const [data, setData] = useState<IVariables>(defaultValues);
   // const [value, setValue] = useState<Number>(0);
@@ -32,7 +33,8 @@ const Home: NextPage = () => {
     //   />
     // </div>
     <StoreProvider>
-      <Header></Header>
+      <Header />
+      <HomeScreen />
     </StoreProvider>
   );
 };
