@@ -8,7 +8,12 @@ import React, {
 import { io, Socket } from "socket.io-client";
 import { IVariables, defaultValues } from "../types";
 
-export const StoreContext = createContext<IVariables>(defaultValues);
+interface iContext {
+  variables: IVariables;
+  setVariable: (name: string, value: number) => void;
+}
+
+export const StoreContext = createContext<iContext | undefined>(undefined);
 
 const URL = "http://localhost:3001";
 
@@ -19,19 +24,23 @@ interface Props {
 }
 
 const StoreProvider: FC<Props> = ({ children }) => {
-  const [data, setData] = useState<IVariables>(defaultValues);
+  const [variables, setVariables] = useState<IVariables>(defaultValues);
 
   useEffect(() => {
-    socket.on("receive_message", (data) => {
-      setData(data);
+    socket.on("data", (data) => {
+      setVariables(data);
     });
   });
 
-  const setVariable = () => {
-    socket.emit("message", "value");
+  const setVariable = (name: string, value: number) => {
+    socket.emit("control", { name, value });
   };
 
-  return <StoreContext.Provider value={data}>{children}</StoreContext.Provider>;
+  return (
+    <StoreContext.Provider value={{ variables, setVariable }}>
+      {children}
+    </StoreContext.Provider>
+  );
 };
 
 export default StoreProvider;
