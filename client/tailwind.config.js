@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      barlow: "Barlow",
+      inter: "Inter",
+    },
   },
   plugins: [],
 };
