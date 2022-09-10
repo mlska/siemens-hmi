@@ -6,11 +6,14 @@ import React, {
   ReactNode,
 } from "react";
 import { io, Socket } from "socket.io-client";
-import { IVariables, defaultValues } from "../types";
+import { IVariables, IUser } from "../types";
+import { defaultVariables, defaultUser } from "../helpers";
 
 interface iContext {
   variables: IVariables;
   setVariable: (name: string, value: number) => void;
+  user: IUser;
+  handleLogin: (props: IUser) => void;
 }
 
 export const StoreContext = createContext<iContext | undefined>(undefined);
@@ -24,7 +27,8 @@ interface Props {
 }
 
 const StoreProvider: FC<Props> = ({ children }) => {
-  const [variables, setVariables] = useState<IVariables>(defaultValues);
+  const [variables, setVariables] = useState<IVariables>(defaultVariables);
+  const [user, setUser] = useState<IUser>(defaultUser);
 
   useEffect(() => {
     socket.on("data", (data) => {
@@ -36,8 +40,14 @@ const StoreProvider: FC<Props> = ({ children }) => {
     socket.emit("control", { name, value });
   };
 
+  const handleLogin = (props: IUser) => {
+    setUser(props);
+  };
+
   return (
-    <StoreContext.Provider value={{ variables, setVariable }}>
+    <StoreContext.Provider
+      value={{ variables, setVariable, user, handleLogin }}
+    >
       {children}
     </StoreContext.Provider>
   );
