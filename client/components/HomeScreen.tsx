@@ -6,20 +6,26 @@ const HomeScreen = () => {
 
   const [value, setValue] = useState(0);
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.valueAsNumber);
   };
 
   return (
     <main className="flex flex-col items-center justify-center gap-4 my-16">
       <button
-        onClick={() => plc?.setVariable("wStatusWord1", parseInt(value))}
+        onClick={() => plc?.setVariable("wStatusWord1", value)}
         className="w-64 p-2 ml-4 bg-slate-600"
       >
         Send to PLC
       </button>
-      <div>Aktualna wartość wStatusWord1: {plc?.variables.wStatusWord1}</div>
-      <input type="number" onChange={handleOnChange} value={value} />
+      <input
+        className="text-xl text-center bg-blue-600 w-96"
+        type="number"
+        onChange={handleOnChange}
+        value={value}
+      />
+      <div>Aktualna wartość wStatusWord1:</div>
+      <h1 className="text-3xl">{plc?.variables.wStatusWord1}</h1>
     </main>
   );
 };
