@@ -12,10 +12,10 @@ export interface IUser {
   surname: string;
   login: string;
   password: string;
-  level: UserLevel;
+  level: Role;
 }
 
-export enum UserLevel {
+export enum Role {
   Operator,
   Mainteance,
   Engineer,

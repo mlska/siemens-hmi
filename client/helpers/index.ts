@@ -1,4 +1,4 @@
-import { IVariables, IUser, UserLevel } from "../types";
+import { IVariables, IUser, Role } from "../types";
 
 export const defaultVariables: IVariables = {
   wStatusWord1: 0,
@@ -14,5 +14,5 @@ export const defaultUser: IUser = {
   surname: "Operator",
   login: "operator",
   password: "operator",
-  level: UserLevel.Operator,
+  level: Role.Operator,
 };
