@@ -58,7 +58,7 @@ const Header = () => {
       </button>
       <button
         onClick={handleLoginShow}
-        className="flex items-center justify-center px-4 border-r"
+        className="flex items-center px-4 border-r"
       >
         <AiOutlineUser className="mr-2 text-2xl" />
         <p>{`${plc?.user.name} ${plc?.user.surname}`}</p>
