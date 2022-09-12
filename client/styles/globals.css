@@ -9,7 +9,12 @@ body {
   font-family: Inter, sans-serif;
   max-width: 1920px;
   max-height: 1080px;
-  height: 100%;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 a {
