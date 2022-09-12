@@ -52,7 +52,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex w-full h-12 font-light text-white bg-blue-600 border-gray-400">
+    <header className="flex w-full h-12 font-light text-white bg-blue-600">
       <button onClick={handleLeftMenuShow} className="px-4 text-2xl border-r">
         <AiOutlineMenuUnfold />
       </button>

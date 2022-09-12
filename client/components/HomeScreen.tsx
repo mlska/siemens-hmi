@@ -11,7 +11,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center gap-4 my-16">
+    <main className="flex flex-col items-center justify-center gap-4 my-16 grow">
       <button
         onClick={() => plc?.setVariable("wStatusWord1", value)}
         className="w-64 p-2 ml-4 bg-slate-600"
