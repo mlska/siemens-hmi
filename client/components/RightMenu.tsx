@@ -26,7 +26,6 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
   ];
 
   const NavComponent = navigations.map((element: INavElement) => {
-    console.log(element.path);
     return (
       <li
         className={`flex items-center px-3 py-2 ${
