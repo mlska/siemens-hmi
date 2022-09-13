@@ -9,6 +9,7 @@ body {
   font-family: Inter, sans-serif;
   max-width: 1920px;
   max-height: 1080px;
+  overflow: hidden;
 }
 
 #__next {
