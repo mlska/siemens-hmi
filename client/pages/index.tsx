@@ -5,6 +5,7 @@ import StoreProvider from "../store/StoreProvider";
 import Header from "../components/Header";
 import HomeScreen from "../components/HomeScreen";
 import Footer from "../components/Footer";
+import RightMenu from "../components/RightMenu";
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       <Link href="/">
         <HomeScreen />
       </Link>
+      <RightMenu />
       <Footer />
     </StoreProvider>
   );
