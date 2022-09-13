@@ -79,12 +79,16 @@ const Header = () => {
           "animate-pulse text-red-900"
         }`}
       >
-        <FiAlertTriangle className="mr-3 text-2xl animate-bounce" />
+        <FiAlertTriangle className="mr-3 text-2xl" />
         Alarmy
       </button>
       <DateComponent />
-      <button className="px-3 text-3xl border-l">
-        <IoIosArrowBack />
+      <button className="px-3 text-3xl border-l" onClick={plc?.toggleNav}>
+        <IoIosArrowBack
+          className={`transition duration-300 ${
+            plc?.isNavExpanded && "rotate-180"
+          }`}
+        />
       </button>
       <Modal
         isShown={isLeftMenuShown}
