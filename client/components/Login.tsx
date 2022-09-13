@@ -62,7 +62,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
 
   return (
     <>
-      <div className="fixed z-50 -translate-x-1/2 -translate-y-1/2 bg-gray-100 rounded-lg shadow-lg outline-none animate-scaletransform top-1/2 left-1/2">
+      <div className="fixed z-50 bg-gray-100 rounded-lg shadow-lg outline-none animate-scaletranslate top-1/2 left-1/2">
         <div className="px-16 py-12 overflow-x-hidden overflow-y-auto">
           <h1 className="mb-4 text-3xl font-bold text-center text-gray-800 font-barlow">
             Panel Użytkownika
