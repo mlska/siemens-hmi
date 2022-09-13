@@ -14,6 +14,8 @@ interface iContext {
   setVariable: (name: string, value: number) => void;
   user: IUser;
   handleLogin: (props: IUser) => void;
+  isNavExpanded: boolean;
+  toggleNav: () => void;
 }
 
 export const StoreContext = createContext<iContext | undefined>(undefined);
@@ -29,6 +31,7 @@ interface Props {
 const StoreProvider: FC<Props> = ({ children }) => {
   const [variables, setVariables] = useState<IVariables>(defaultVariables);
   const [user, setUser] = useState<IUser>(defaultUser);
+  const [isNavExpanded, setIsNavExpanded] = useState<boolean>(false);
 
   useEffect(() => {
     socket.on("data", (data) => {
@@ -44,9 +47,20 @@ const StoreProvider: FC<Props> = ({ children }) => {
     setUser(props);
   };
 
+  const toggleNav = () => {
+    setIsNavExpanded((prevState) => !prevState);
+  };
+
   return (
     <StoreContext.Provider
-      value={{ variables, setVariable, user, handleLogin }}
+      value={{
+        variables,
+        setVariable,
+        user,
+        handleLogin,
+        isNavExpanded,
+        toggleNav,
+      }}
     >
       {children}
     </StoreContext.Provider>
