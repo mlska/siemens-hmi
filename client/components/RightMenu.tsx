@@ -30,7 +30,7 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
     return (
       <li
         key={element.caption}
-        className={`px-3 py-2 ${
+        className={`px-4 py-2 ${
           element.path === location.pathname && "bg-blue-800"
         }`}
       >
@@ -52,9 +52,9 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
     <aside
       className={`${
         db?.isNavExpanded ? "translate-x-0" : "translate-x-[148px]"
-      } text-white absolute right-0 top-[49px] w-[202px] h-[calc(100vh-6rem-2px)] bg-blue-600 transition-width duration-500 ease-in-out text-3xl z-10`}
+      } text-white fixed -right-4 top-[64px] w-[222px] h-[calc(100vh-7rem-14px)] bg-blue-600 transition-width duration-500 ease-in-out text-3xl z-10 rounded-2xl`}
     >
-      <ul className="cursor-pointer flex flex-col">{NavComponent}</ul>
+      <ul className="cursor-pointer flex flex-col mt-4">{NavComponent}</ul>
     </aside>
   );
 };

@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { io, Socket } from "socket.io-client";
 import { IVariables, IUser } from "../types";
-import { defaultVariables, defaultUser } from "../helpers";
+import { defaultVariables, defaultUser } from "../helpers/defaults";
 
 interface iContext {
   variables: IVariables;
