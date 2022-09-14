@@ -15,10 +15,23 @@ export interface IUser {
   level: Role;
 }
 
+export interface IMessage {
+  id: number;
+  text: string;
+  type: MessageType;
+}
+
 export enum Role {
   Operator,
   Mainteance,
   Engineer,
   Admin,
   Service,
+}
+
+export enum MessageType {
+  Info = 1,
+  Warning,
+  AlarmMid,
+  AlarmCritical,
 }
