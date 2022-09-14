@@ -28,6 +28,7 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
   const NavComponent = navigations.map((element: INavElement) => {
     return (
       <li
+        key={element.caption}
         className={`flex items-center px-3 py-2 ${
           element.path === pathname && "bg-blue-800"
         }`}

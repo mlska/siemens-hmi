@@ -11,9 +11,7 @@ const Home: NextPage = () => {
   return (
     <StoreProvider>
       <Header />
-      <Link href="/">
-        <HomeScreen />
-      </Link>
+      <HomeScreen />
       <RightMenu />
       <Footer />
     </StoreProvider>
