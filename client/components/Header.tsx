@@ -11,6 +11,8 @@ import { FiAlertTriangle } from "react-icons/fi";
 import { StoreContext } from "../store/StoreProvider";
 import Moment from "react-moment";
 
+import { isBitSet } from "../helpers/functions";
+
 import Modal from "./Modal";
 import LeftMenu from "./LeftMenu";
 import Login from "./Login";
@@ -27,11 +29,6 @@ const Header = () => {
 
   const handleLoginShow = () => {
     setIsLoginShown((prevState) => !prevState);
-  };
-
-  const isBitSet = (variable: any, index: number) => {
-    const binary = variable.toString(2).split("").reverse().join("");
-    return Number(binary[index]);
   };
 
   const DateComponent = () => {
