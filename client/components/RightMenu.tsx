@@ -1,15 +1,16 @@
 import React, { FunctionComponent, useContext } from "react";
-import { useRouter } from "next/router";
 import { StoreContext } from "../store/StoreProvider";
 import { AiOutlineHome } from "react-icons/Ai";
 import { FiSettings } from "react-icons/Fi";
 import { IoMdStats } from "react-icons/io";
 import type { IconType } from "react-icons";
 
+import { Link, useLocation } from "react-router-dom";
+
 interface RightMenuProps {}
 
 const RightMenu: FunctionComponent<RightMenuProps> = () => {
-  const { pathname } = useRouter();
+  const location = useLocation();
 
   const db = useContext(StoreContext);
 
@@ -21,20 +22,28 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
 
   const navigations: Array<INavElement> = [
     { icon: AiOutlineHome, caption: "Ekran Główny", path: "/" },
-    { icon: FiSettings, caption: "Ustawienia", path: "" },
-    { icon: IoMdStats, caption: "Statystyki", path: "" },
+    { icon: FiSettings, caption: "Ustawienia", path: "/settings" },
+    { icon: IoMdStats, caption: "Statystyki", path: "/statistics" },
   ];
 
   const NavComponent = navigations.map((element: INavElement) => {
     return (
       <li
         key={element.caption}
-        className={`flex items-center px-3 py-2 ${
-          element.path === pathname && "bg-blue-800"
+        className={`px-3 py-2 ${
+          element.path === location.pathname && "bg-blue-800"
         }`}
       >
-        {<element.icon />}
-        <p className="text-base ml-3 font-light">{element.caption}</p>
+        <Link
+          onClick={() => {
+            db?.isNavExpanded && db?.toggleNav();
+          }}
+          className="flex items-center"
+          to={element.path}
+        >
+          {<element.icon />}
+          <p className="text-base ml-3 font-light">{element.caption}</p>
+        </Link>
       </li>
     );
   });
