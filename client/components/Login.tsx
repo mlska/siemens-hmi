@@ -75,7 +75,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
               <label className="flex flex-col">
                 <span className="">Login:</span>
                 <input
-                  className="p-2"
+                  className="p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg"
                   onChange={handleOnChangeLogin}
                   type="text"
                   value={login}
@@ -86,7 +86,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
               <label className="flex flex-col">
                 <span className="">Hasło:</span>
                 <input
-                  className="p-2"
+                  className="p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg"
                   onChange={handleOnChangePassword}
                   type="password"
                   value={password}
@@ -97,21 +97,21 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
             <div className="flex justify-between gap-4 mt-4">
               {isUserLogged ? (
                 <button
-                  className="p-4 text-white bg-blue-600 rounded grow"
+                  className="p-4 text-white bg-blue-600 rounded-md grow"
                   onClick={handleLogout}
                 >
                   Wyloguj
                 </button>
               ) : (
                 <button
-                  className="p-4 text-white bg-blue-600 rounded grow"
+                  className="p-4 text-white bg-blue-600 rounded-md grow"
                   type="submit"
                 >
                   Zaloguj
                 </button>
               )}
               <button
-                className="p-4 text-white bg-blue-600 rounded grow"
+                className="p-4 text-white bg-gray-600 hover: rounded-md grow"
                 onClick={onCancel}
               >
                 Anuluj

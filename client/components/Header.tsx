@@ -49,7 +49,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex w-full h-12 font-light text-white bg-blue-600">
+    <header className="flex w-full h-12 font-light text-white bg-blue-600 py-2">
       <button onClick={handleLeftMenuShow} className="px-4 text-2xl border-r">
         <AiOutlineMenuUnfold />
       </button>
@@ -63,7 +63,7 @@ const Header = () => {
       <section className="flex items-center justify-center flex-1 border-r">
         Ekran Główny
       </section>
-      <div className="p-3 text-2xl border-r">
+      <div className="p-3 text-2xl border-r flex items-center">
         {isBitSet(plc?.variables.wStatusWord1, 0) ? (
           <MdAutorenew className="animate-spin" />
         ) : (
@@ -71,7 +71,7 @@ const Header = () => {
         )}
       </div>
       <button
-        className={`flex p-3 ${
+        className={`flex p-3 items-center ${
           isBitSet(plc?.variables.wStatusWord1, 0) &&
           "animate-pulse text-red-900"
         }`}

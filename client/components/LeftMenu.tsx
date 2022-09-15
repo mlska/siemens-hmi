@@ -6,7 +6,7 @@ const LeftMenu: FunctionComponent = () => {
 
   return (
     <>
-      <div className="absolute z-50 w-[215px] h-[calc(100vh-6rem)] outline-none top-12 bg-gray-700 animate-translate">
+      <div className="absolute z-50 w-[calc(15.6%)] h-[calc(100vh-7rem-15px)] outline-none top-[64px] left-4 bg-gray-700 animate-translate rounded-2xl">
         <div className="flex flex-col gap-4 mx-4 my-4 overflow-x-hidden overflow-y-auto">
           <button
             className="p-4 text-white bg-blue-600 rounded"

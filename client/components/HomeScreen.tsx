@@ -16,7 +16,7 @@ const HomeScreen = () => {
         <h1 className="text-3xl font-barlow font-bold text-gray-800">
           Widok stanowiska
         </h1>
-        <article className="flex flex-col items-center justify-center h-full gap-4">
+        {/* <article className="flex flex-col items-center justify-center h-full gap-4">
           <button
             onClick={() => plc?.setVariable("wStatusWord1", value)}
             className="w-64 p-2 ml-4 bg-slate-600"
@@ -31,7 +31,7 @@ const HomeScreen = () => {
           />
           <div>Aktualna wartość wStatusWord1:</div>
           <h1 className="text-3xl">{plc?.variables.wStatusWord1}</h1>
-        </article>
+        </article> */}
       </section>
       <aside className="flex flex-col gap-4 basis-3/12 shadow-lg bg-transparent mr-16">
         <section className="h-1/2 p-4 bg-white rounded-2xl">
