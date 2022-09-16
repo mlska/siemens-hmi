@@ -52,7 +52,7 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
     <aside
       className={`${
         db?.isNavExpanded ? "translate-x-0" : "translate-x-[148px]"
-      } text-white fixed -right-4 top-[64px] w-[222px] h-[calc(100vh-7rem-14px)] bg-blue-600 transition-width duration-500 ease-in-out text-3xl z-10 rounded-2xl`}
+      } text-white fixed -right-4 top-[64px] w-[222px] h-[calc(100vh-7rem-14px)] max-h-[952px] bg-blue-600 transition-width duration-500 ease-in-out text-3xl z-10 rounded-2xl`}
     >
       <ul className="cursor-pointer flex flex-col mt-4">{NavComponent}</ul>
     </aside>
