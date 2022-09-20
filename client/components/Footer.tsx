@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { StoreContext } from "../store/StoreProvider";
 
 const Footer = () => {
+  const hmi = useContext(StoreContext);
+
+  const [alarm, setAlarm] = useState<string>("");
+  const [warning, setWarning] = useState<string>("");
+
+  useEffect(() => {
+    hmi?.alarms.length
+      ? setAlarm(
+          `${hmi.alarms[0].id} - ${hmi.alarms[0].type} - ${hmi.alarms[0].text}`
+        )
+      : setAlarm("");
+  }, [hmi?.alarms]);
+
+  useEffect(() => {
+    hmi?.warnings.length
+      ? setWarning(
+          `${hmi.warnings[0].id} - ${hmi.warnings[0].type} - ${hmi.warnings[0].text}`
+        )
+      : setWarning("");
+  }, [hmi?.warnings]);
+
   return (
-    <footer className="flex items-center justify-center w-full h-12 font-light text-white bg-blue-600 px-4 gap-4 text-lg">
-      <section className="grow bg-red-500 rounded-md px-2 transition">
-        1000 - Alarm Krytyczny - Błąd czujnika 1
-      </section>
-      <section className="grow bg-yellow-500 rounded-md px-2 transition">
-        2000 - Ostrzeżenie - Dosyp węgla do pieca
-      </section>
-      <section className="grow bg-blue-800 rounded-md px-2 transition">
-        3000 - Informacja - Poziom baterii 50%
-      </section>
+    <footer className="flex items-center justify-center w-full h-12 gap-4 px-4 text-sm font-light text-white bg-blue-600">
+      {alarm && (
+        <section className="px-2 py-1 bg-red-500 rounded-md grow">
+          {alarm}
+        </section>
+      )}
+      {warning && (
+        <section className="px-2 py-1 bg-yellow-500 rounded-md grow">
+          {warning}
+        </section>
+      )}
     </footer>
   );
 };

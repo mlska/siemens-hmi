@@ -6,12 +6,17 @@ import {
   AiOutlineMenuFold,
 } from "react-icons/Ai";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { MdAutorenew, MdOutlineBackHand } from "react-icons/md";
+import {
+  MdAutorenew,
+  MdOutlineBackHand,
+  MdOutlineEngineering,
+} from "react-icons/md";
 import { FiAlertTriangle } from "react-icons/fi";
 import { StoreContext } from "../store/StoreProvider";
 import Moment from "react-moment";
 
 import { isBitSet } from "../helpers/functions";
+import { Role } from "../types";
 
 import Modal from "./Modal";
 import LeftMenu from "./LeftMenu";
@@ -49,7 +54,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex w-full h-12 font-light text-white bg-blue-600 py-2">
+    <header className="flex w-full h-12 py-2 font-light text-white bg-blue-600">
       <button onClick={handleLeftMenuShow} className="px-4 text-2xl border-r">
         <AiOutlineMenuUnfold />
       </button>
@@ -57,13 +62,17 @@ const Header = () => {
         onClick={handleLoginShow}
         className="flex items-center px-4 border-r"
       >
-        <AiOutlineUser className="mr-2 text-2xl" />
+        {plc?.user.level === Role.Service ? (
+          <MdOutlineEngineering className="mr-2 text-2xl" />
+        ) : (
+          <AiOutlineUser className="mr-2 text-2xl" />
+        )}
         <p>{`${plc?.user.name} ${plc?.user.surname}`}</p>
       </button>
       <section className="flex items-center justify-center flex-1 border-r">
         Ekran Główny
       </section>
-      <div className="p-3 text-2xl border-r flex items-center">
+      <div className="flex items-center p-3 text-2xl border-r">
         {isBitSet(plc?.variables.wStatusWord1, 0) ? (
           <MdAutorenew className="animate-spin" />
         ) : (
@@ -72,8 +81,7 @@ const Header = () => {
       </div>
       <button
         className={`flex p-3 items-center ${
-          isBitSet(plc?.variables.wStatusWord1, 0) &&
-          "animate-pulse text-red-900"
+          plc?.alarms.length && "animate-pulse text-red-900"
         }`}
       >
         <FiAlertTriangle className="mr-3 text-2xl" />

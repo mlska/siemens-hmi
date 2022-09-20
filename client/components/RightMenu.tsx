@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useContext } from "react";
 import { StoreContext } from "../store/StoreProvider";
 import { AiOutlineHome } from "react-icons/Ai";
-import { FiSettings } from "react-icons/Fi";
+import { FiSettings } from "react-icons/fi";
 import { IoMdStats } from "react-icons/io";
 import type { IconType } from "react-icons";
 
@@ -42,7 +42,7 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
           to={element.path}
         >
           {<element.icon />}
-          <p className="text-base ml-3 font-light">{element.caption}</p>
+          <p className="ml-3 text-base font-light">{element.caption}</p>
         </Link>
       </li>
     );
@@ -54,7 +54,7 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
         db?.isNavExpanded ? "translate-x-0" : "translate-x-[148px]"
       } text-white fixed -right-4 top-[64px] w-[222px] h-[calc(100vh-7rem-14px)] max-h-[952px] bg-blue-600 transition-width duration-500 ease-in-out text-3xl z-10 rounded-2xl`}
     >
-      <ul className="cursor-pointer flex flex-col mt-4">{NavComponent}</ul>
+      <ul className="flex flex-col mt-4 cursor-pointer">{NavComponent}</ul>
     </aside>
   );
 };

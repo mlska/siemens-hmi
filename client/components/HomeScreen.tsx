@@ -11,9 +11,9 @@ const HomeScreen = () => {
   };
 
   return (
-    <main className="flex p-4 grow bg-gray-200 gap-4">
-      <section className="basis-9/12 bg-white rounded-2xl p-4 shadow-lg schrink">
-        <h1 className="text-3xl font-barlow font-bold text-gray-800">
+    <main className="flex gap-4 p-4 bg-gray-200 grow">
+      <section className="p-4 bg-white shadow-lg basis-9/12 rounded-2xl schrink">
+        <h1 className="text-3xl font-bold text-gray-800 font-barlow">
           Widok stanowiska
         </h1>
         {/* <article className="flex flex-col items-center justify-center h-full gap-4">
@@ -33,14 +33,14 @@ const HomeScreen = () => {
           <h1 className="text-3xl">{plc?.variables.wStatusWord1}</h1>
         </article> */}
       </section>
-      <aside className="flex flex-col gap-4 basis-3/12 shadow-lg bg-transparent mr-16">
-        <section className="h-1/2 p-4 bg-white rounded-2xl">
-          <h2 className="text-2xl font barlow font-bold text-gray-800">
+      <aside className="flex flex-col gap-4 mr-16 bg-transparent shadow-lg basis-3/12">
+        <section className="p-4 bg-white h-1/2 rounded-2xl">
+          <h2 className="text-2xl font-bold text-gray-800 font barlow">
             System
           </h2>
         </section>
-        <section className="h-1/2 p-4 bg-white rounded-2xl shadow-lg">
-          <h2 className="text-2xl font barlow font-bold text-gray-800">
+        <section className="p-4 bg-white shadow-lg h-1/2 rounded-2xl">
+          <h2 className="text-2xl font-bold text-gray-800 font barlow">
             Bezpieczeństwo
           </h2>
         </section>
