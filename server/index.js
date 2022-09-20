@@ -19,34 +19,37 @@ const io = new Server(server, {
   },
 });
 
+let interval;
+
+const plc = new S7Endpoint(configuration);
+const tags = new S7ItemGroup(plc);
+
+plc.on("error", (e) => console.log(`${timeStamp()} - PLC`, e));
+plc.on("disconnect", () => {
+  console.log(`${timeStamp()}  - PLC Disconnected`);
+});
+
+plc.on("connect", async () => {
+  console.log(`${timeStamp()} - PLC Connected`);
+  tags.setTranslationCB((tag) => variables[tag]);
+  tags.addItems(Object.keys(variables));
+});
+
 io.on("connection", (socket) => {
-  let interval;
+  console.log(`${timeStamp()}  - HMI Connected`);
+  interval = setInterval(async () => {
+    const data = await tags.readAllItems();
+    socket.broadcast.emit("data", data);
+  }, refreshTime);
 
-  console.log(`${timeStamp()} - HMI Connected: ${socket.id}`);
-
-  const plc = new S7Endpoint(configuration);
-  const tags = new S7ItemGroup(plc);
-
-  plc.on("error", (e) => console.log(`${timeStamp()} - PLC`, e));
-  plc.on("disconnect", () => {
-    console.log(`${timeStamp()}  - PLC Disconnected`);
-    clearInterval(interval);
+  socket.on("control", (variable) => {
+    console.log(variable);
+    tags.writeItems(variable.name, variable.value);
   });
 
-  plc.on("connect", async () => {
-    console.log(`${timeStamp()} - PLC Connected`);
-
-    tags.setTranslationCB((tag) => variables[tag]);
-    tags.addItems(Object.keys(variables));
-    interval = setInterval(async () => {
-      const data = await tags.readAllItems();
-      socket.broadcast.emit("data", data);
-    }, refreshTime);
-
-    socket.on("control", (variable) => {
-      console.log(variable);
-      tags.writeItems(variable.name, variable.value);
-    });
+  socket.on("disconnect", (reason) => {
+    console.log(`${timeStamp()}  - HMI Disconnected`);
+    clearInterval(interval);
   });
 });
 
