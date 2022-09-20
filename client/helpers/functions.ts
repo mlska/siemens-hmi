@@ -10,13 +10,11 @@ export const isBitSet = (variable: any, index: number) => {
 export const wordToAlarms = (
   word: number,
   alarms: Array<IMessage>
-): Array<object> => {
-  let arrOfAlarms: Array<Object> = [];
+): Array<IMessage> => {
+  let arrOfAlarms: Array<IMessage> = [];
   const arrOfBits = word.toString(2).split("").reverse();
-
   arrOfBits.forEach((bit, index) => {
-    Boolean(bit) && arrOfAlarms.push(alarms[index]);
+    Number(bit) && arrOfAlarms.push(alarms[index]);
   });
-
   return arrOfAlarms;
 };
