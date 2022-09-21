@@ -30,8 +30,14 @@ export enum Role {
 }
 
 export enum MessageType {
-  Info = 1,
-  Warning,
-  AlarmMid,
-  AlarmCritical,
+  Info = "Informacja",
+  Warning = "Ostrzeżenie",
+  AlarmMid = "Alarm Mid",
+  AlarmCritical = "Alarm Krytyczny",
+}
+
+export enum ScreenName {
+  HomeScreen = "Ekran Główny",
+  Settings = "Ustawienia",
+  Statistics = "Statystyki",
 }
