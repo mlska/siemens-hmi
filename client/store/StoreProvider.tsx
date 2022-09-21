@@ -6,10 +6,10 @@ import React, {
   ReactNode,
 } from "react";
 import { io, Socket } from "socket.io-client";
-import { IVariables, IUser, IMessage } from "../types";
+import { IVariables, IUser, IMessage, ScreenName } from "../types";
 import { defaultVariables, defaultUser } from "../helpers/defaults";
 import { wordToAlarms } from "../helpers/functions";
-import { alarmWord1 } from "../helpers/messages";
+import { alarmWord1, warningWord1 } from "../helpers/messages";
 
 interface iContext {
   variables: IVariables;
@@ -20,6 +20,8 @@ interface iContext {
   toggleNav: () => void;
   alarms: Array<IMessage>;
   warnings: Array<IMessage>;
+  screenName: string;
+  handleScreenName: (screenName: ScreenName) => void;
 }
 
 export const StoreContext = createContext<iContext | undefined>(undefined);
@@ -38,6 +40,7 @@ const StoreProvider: FC<Props> = ({ children }) => {
   const [isNavExpanded, setIsNavExpanded] = useState<boolean>(false);
   const [alarms, setAlarms] = useState<Array<IMessage>>([]);
   const [warnings, setWarnings] = useState<Array<IMessage>>([]);
+  const [screenName, setScreenName] = useState<string>("");
 
   useEffect(() => {
     socket.on("data", (data) => {
@@ -47,7 +50,7 @@ const StoreProvider: FC<Props> = ({ children }) => {
 
   useEffect(() => {
     setAlarms(wordToAlarms(variables.wStatusWord1, alarmWord1));
-    setWarnings(wordToAlarms(variables.wControlWord1, alarmWord1));
+    setWarnings(wordToAlarms(variables.wControlWord1, warningWord1));
   }, [variables]);
 
   const setVariable = (name: string, value: number) => {
@@ -62,6 +65,10 @@ const StoreProvider: FC<Props> = ({ children }) => {
     setIsNavExpanded((prevState) => !prevState);
   };
 
+  const handleScreenName = (screenName: ScreenName) => {
+    setScreenName(screenName);
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -73,6 +80,8 @@ const StoreProvider: FC<Props> = ({ children }) => {
         toggleNav,
         alarms,
         warnings,
+        screenName,
+        handleScreenName,
       }}
     >
       {children}
