@@ -34,6 +34,9 @@ module.exports = {
         scaletranslate: "scaletranslate 300ms forwards",
         translate: "translate 500ms forwards",
       },
+      transitionProperty: {
+        'width': 'width'
+    },
     },
     fontFamily: {
       barlow: "Barlow",
