@@ -62,7 +62,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
 
   return (
     <>
-      <div className="fixed z-50 bg-gray-100 rounded-2xl shadow-lg outline-none animate-scaletranslate top-1/2 left-1/2">
+      <div className="fixed z-50 bg-gray-100 shadow-lg outline-none rounded-2xl animate-scaletranslate top-1/2 left-1/2">
         <div className="px-16 py-12 overflow-x-hidden overflow-y-auto">
           <h1 className="mb-4 text-3xl font-bold text-center text-gray-800 font-barlow">
             Panel Użytkownika
@@ -75,7 +75,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
               <label className="flex flex-col">
                 <span className="">Login:</span>
                 <input
-                  className="p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg"
+                  className="p-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onChange={handleOnChangeLogin}
                   type="text"
                   value={login}
@@ -86,7 +86,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
               <label className="flex flex-col">
                 <span className="">Hasło:</span>
                 <input
-                  className="p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg"
+                  className="p-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onChange={handleOnChangePassword}
                   type="password"
                   value={password}
@@ -97,21 +97,21 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
             <div className="flex justify-between gap-4 mt-4">
               {isUserLogged ? (
                 <button
-                  className="p-4 text-white bg-blue-600 rounded-md grow"
+                  className="p-4 text-white bg-blue-600 rounded-md grow hover:opacity-90"
                   onClick={handleLogout}
                 >
                   Wyloguj
                 </button>
               ) : (
                 <button
-                  className="p-4 text-white bg-blue-600 rounded-md grow"
+                  className="p-4 text-white bg-blue-600 rounded-md grow hover:opacity-90"
                   type="submit"
                 >
                   Zaloguj
                 </button>
               )}
               <button
-                className="p-4 text-white bg-gray-600 hover: rounded-md grow"
+                className="p-4 text-white bg-gray-600 rounded-md hover: grow hover:opacity-90"
                 onClick={onCancel}
               >
                 Anuluj
