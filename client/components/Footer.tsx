@@ -24,17 +24,25 @@ const Footer = () => {
   }, [hmi?.warnings]);
 
   return (
-    <footer className="flex items-center justify-center w-full h-12 gap-4 px-4 text-sm font-light text-white bg-blue-600">
-      {alarm && (
-        <section className="px-2 py-1 bg-red-500 rounded-md grow">
-          {alarm}
-        </section>
-      )}
-      {warning && (
-        <section className="px-2 py-1 bg-yellow-500 rounded-md grow">
-          {warning}
-        </section>
-      )}
+    <footer
+      className={`overflow-hidden flex items-center justify-center w-full h-12 px-4 text-sm font-light text-white bg-blue-600 ${
+        hmi?.alarms.length && hmi?.warnings.length && "gap-4"
+      }`}
+    >
+      <section
+        className={`bg-red-500 ${
+          hmi?.alarms.length ? "px-2 py-1 w-full" : "w-0"
+        } rounded-md transition-width duration-500`}
+      >
+        {alarm}
+      </section>
+      <section
+        className={`${
+          hmi?.warnings.length ? "px-2 py-1 w-full" : "w-0"
+        } bg-yellow-500 rounded-md w-full transition-width duration-500`}
+      >
+        {warning}
+      </section>
     </footer>
   );
 };
