@@ -1,10 +1,5 @@
 import type { NextPage } from "next";
-import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import StoreProvider from "../store/StoreProvider";
 
 import Header from "../components/Header";
