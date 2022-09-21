@@ -23,7 +23,7 @@ import LeftMenu from "./LeftMenu";
 import Login from "./Login";
 
 const Header = () => {
-  const plc = useContext(StoreContext);
+  const hmi = useContext(StoreContext);
 
   const [isLeftMenuShown, setIsLeftMenuShown] = useState<boolean>(false);
   const [isLoginShown, setIsLoginShown] = useState<boolean>(false);
@@ -62,18 +62,18 @@ const Header = () => {
         onClick={handleLoginShow}
         className="flex items-center px-4 border-r"
       >
-        {plc?.user.level === Role.Service ? (
+        {hmi?.user.level === Role.Service ? (
           <MdOutlineEngineering className="mr-2 text-2xl" />
         ) : (
           <AiOutlineUser className="mr-2 text-2xl" />
         )}
-        <p>{`${plc?.user.name} ${plc?.user.surname}`}</p>
+        <p>{`${hmi?.user.name} ${hmi?.user.surname}`}</p>
       </button>
       <section className="flex items-center justify-center flex-1 border-r">
-        Ekran Główny
+        {hmi?.screenName}
       </section>
       <div className="flex items-center p-3 text-2xl border-r">
-        {isBitSet(plc?.variables.wStatusWord1, 0) ? (
+        {isBitSet(hmi?.variables.wStatusWord1, 0) ? (
           <MdAutorenew className="animate-spin" />
         ) : (
           <MdOutlineBackHand />
@@ -81,17 +81,17 @@ const Header = () => {
       </div>
       <button
         className={`flex p-3 items-center ${
-          plc?.alarms.length && "animate-pulse text-red-900"
-        }`}
+          hmi?.warnings.length && !hmi?.alarms.length && "text-yellow-400"
+        } ${hmi?.alarms.length && "animate-pulse text-red-900"}`}
       >
         <FiAlertTriangle className="mr-3 text-2xl" />
         Alarmy
       </button>
       <DateComponent />
-      <button className="px-3 text-3xl border-l" onClick={plc?.toggleNav}>
+      <button className="px-3 text-3xl border-l" onClick={hmi?.toggleNav}>
         <IoIosArrowBack
           className={`transition duration-300 ${
-            plc?.isNavExpanded && "rotate-180"
+            hmi?.isNavExpanded && "rotate-180"
           }`}
         />
       </button>
