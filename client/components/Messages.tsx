@@ -18,12 +18,12 @@ const Messages: FC<IMessagesProps> = () => {
           Wiadomości
         </h1>
         <div className="flex gap-4 grow">
-          <section className="h-full p-4 bg-white border-2 shadow-lg basis-1/2 rounded-2xl">
+          <section className="h-full p-4 bg-white border-2 basis-1/2 rounded-2xl">
             <h2 className="text-2xl font-bold text-gray-800 font-barlow">
               Alarmy
             </h2>
           </section>
-          <section className="h-full p-4 bg-white border-2 shadow-lg border-1 basis-1/2 rounded-2xl">
+          <section className="h-full p-4 bg-white border-2 border-1 basis-1/2 rounded-2xl">
             <h2 className="text-2xl font-bold text-gray-800 font-barlow">
               Ostrzeżenia
             </h2>
