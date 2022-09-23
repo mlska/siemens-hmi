@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import RightMenu from "../components/RightMenu";
 import Settings from "../components/Settings";
 import Statistics from "../components/Statistics";
+import Messages from "../components/Messages";
 
 const Home: NextPage = () => {
   return (
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
           <Route path="/" element={<HomeScreen />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/statistics" element={<Statistics />} />
+          <Route path="/messages" element={<Messages />} />
         </Routes>
         <RightMenu />
         <Footer />

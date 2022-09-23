@@ -40,4 +40,5 @@ export enum ScreenName {
   HomeScreen = "Ekran Główny",
   Settings = "Ustawienia",
   Statistics = "Statystyki",
+  Messages = "Wiadomości",
 }
