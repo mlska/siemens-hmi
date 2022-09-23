@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useContext } from "react";
 import { StoreContext } from "../store/StoreProvider";
 import { AiOutlineHome } from "react-icons/Ai";
+import { FiAlertTriangle } from "react-icons/fi";
 import { FiSettings } from "react-icons/fi";
 import { IoMdStats } from "react-icons/io";
 import type { IconType } from "react-icons";
@@ -24,6 +25,7 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
     { icon: AiOutlineHome, caption: "Ekran Główny", path: "/" },
     { icon: FiSettings, caption: "Ustawienia", path: "/settings" },
     { icon: IoMdStats, caption: "Statystyki", path: "/statistics" },
+    { icon: FiAlertTriangle, caption: "Wiadomości", path: "/messages" },
   ];
 
   const NavComponent = navigations.map((element: INavElement) => {
