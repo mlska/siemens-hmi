@@ -17,13 +17,13 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
   onCancel,
   isLoginShown,
 }) => {
-  const plc = useContext(StoreContext);
+  const hmi = useContext(StoreContext);
 
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [validationMessage, setValidationMessage] = useState<string>("");
 
-  const isUserLogged = Boolean(plc?.user.id);
+  const isUserLogged = Boolean(hmi?.user.id);
 
   const handleOnChangeLogin = (event: React.ChangeEvent<HTMLInputElement>) =>
     setLogin(event.target.value);
@@ -36,7 +36,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
     console.log("submitted");
 
     if (login === "Serwis" && password === "BlueSerwis") {
-      plc?.handleLogin({
+      hmi?.handleLogin({
         id: 1,
         login,
         password,
@@ -52,7 +52,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
   };
 
   const handleLogout = () => {
-    plc?.handleLogin(defaultUser);
+    hmi?.handleLogin(defaultUser);
     onCancel();
   };
 
