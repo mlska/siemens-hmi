@@ -17,13 +17,13 @@ const HomeScreen = () => {
         </h1>
       </section>
       <aside className="flex flex-col gap-4 mr-16 bg-transparent shadow-lg basis-3/12">
-        <section className="p-4 bg-white h-1/2 rounded-2xl">
-          <h2 className="text-2xl font-bold text-gray-800 font barlow">
+        <section className="p-4 bg-white shadow-lg h-1/2 rounded-2xl">
+          <h2 className="text-2xl font-bold text-gray-800 font-barlow">
             System
           </h2>
         </section>
         <section className="p-4 bg-white shadow-lg h-1/2 rounded-2xl">
-          <h2 className="text-2xl font-bold text-gray-800 font barlow">
+          <h2 className="text-2xl font-bold text-gray-800 font-barlow">
             Bezpieczeństwo
           </h2>
         </section>
