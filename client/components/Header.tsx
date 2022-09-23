@@ -18,6 +18,8 @@ import Moment from "react-moment";
 import { isBitSet } from "../helpers/functions";
 import { Role } from "../types";
 
+import { Link } from "react-router-dom";
+
 import Modal from "./Modal";
 import LeftMenu from "./LeftMenu";
 import Login from "./Login";
@@ -79,14 +81,15 @@ const Header = () => {
           <MdOutlineBackHand />
         )}
       </div>
-      <button
+      <Link
         className={`flex p-3 items-center ${
           hmi?.warnings.length && !hmi?.alarms.length && "text-yellow-400"
         } ${hmi?.alarms.length && "animate-pulse text-red-900"}`}
+        onClick={() => console.log("clicked")}
+        to={"/messages"}
       >
-        <FiAlertTriangle className="mr-3 text-2xl" />
-        Alarmy
-      </button>
+        <FiAlertTriangle className="text-2xl" />
+      </Link>
       <DateComponent />
       <button className="px-3 text-3xl border-l" onClick={hmi?.toggleNav}>
         <IoIosArrowBack
