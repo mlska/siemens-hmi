@@ -32,15 +32,13 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
     return (
       <li
         key={element.caption}
-        className={`px-4 py-2 ${
-          element.path === location.pathname && "bg-blue-800"
-        }`}
+        className={` ${element.path === location.pathname && "bg-blue-800"}`}
       >
         <Link
           onClick={() => {
             hmi?.isNavExpanded && hmi?.toggleNav();
           }}
-          className="flex items-center"
+          className="flex items-center px-4 py-2"
           to={element.path}
         >
           {<element.icon />}
