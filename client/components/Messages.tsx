@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { StoreContext } from "../store/StoreProvider";
 import { ScreenName } from "../types";
 
@@ -11,24 +11,39 @@ const Messages: FC<IMessagesProps> = () => {
     hmi?.handleScreenName(ScreenName.Messages);
   });
 
+  const AlarmListComponent = hmi?.alarms.map((element) => {
+    return (
+      <li
+        className={`bg-red-500 text-white px-2 py-2 w-full rounded-md transition-width duration-500`}
+      >
+        {`${element.id} - ${element.type} - ${element.text}`}
+      </li>
+    );
+  });
+
+  const WarningListComponent = hmi?.warnings.map((element) => {
+    return (
+      <li
+        className={`bg-yellow-500 text-gray-800 px-2 py-2 w-full rounded-md transition-width duration-500`}
+      >
+        {`${element.id} - ${element.type} - ${element.text}`}
+      </li>
+    );
+  });
+
   return (
-    <div className="flex gap-4 p-4 bg-gray-200 grow">
+    <div className="flex p-4 bg-gray-200 grow">
+      <section className="flex flex-col w-full p-4 mr-4 bg-white shadow-lg rounded-2xl">
+        <h1 className="pb-4 mb-2 text-3xl font-bold text-gray-800 font-barlow">
+          Alarmy
+        </h1>
+        <ul>{AlarmListComponent}</ul>
+      </section>
       <section className="flex flex-col w-full p-4 mr-16 bg-white shadow-lg rounded-2xl">
         <h1 className="pb-4 mb-2 text-3xl font-bold text-gray-800 font-barlow">
-          Wiadomości
+          Ostrzeżenia
         </h1>
-        <div className="flex gap-4 grow">
-          <section className="h-full p-4 bg-white border-2 basis-1/2 rounded-2xl">
-            <h2 className="text-2xl font-bold text-gray-800 font-barlow">
-              Alarmy
-            </h2>
-          </section>
-          <section className="h-full p-4 bg-white border-2 border-1 basis-1/2 rounded-2xl">
-            <h2 className="text-2xl font-bold text-gray-800 font-barlow">
-              Ostrzeżenia
-            </h2>
-          </section>
-        </div>
+        <ul>{WarningListComponent}</ul>
       </section>
     </div>
   );
