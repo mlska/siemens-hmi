@@ -39,7 +39,7 @@ const Footer = () => {
       <section
         className={`${
           hmi?.warnings.length ? "px-2 py-1 w-full" : "w-0"
-        } bg-yellow-500 rounded-md w-full transition-width duration-500`}
+        } bg-yellow-500 rounded-md w-full transition-width duration-500 text-gray-800`}
       >
         {warning}
       </section>
