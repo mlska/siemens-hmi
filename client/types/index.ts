@@ -22,11 +22,11 @@ export interface IMessage {
 }
 
 export enum Role {
-  Operator,
-  Mainteance,
-  Engineer,
-  Admin,
-  Service,
+  Operator = "Operator",
+  Mainteance = "Mainteance",
+  Engineer = "Engineer",
+  Admin = "Admin",
+  Service = "Service",
 }
 
 export enum MessageType {
