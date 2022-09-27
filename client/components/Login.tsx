@@ -5,8 +5,8 @@ import React, {
   useState,
 } from "react";
 import { StoreContext } from "../store/StoreProvider";
-import { Role } from "../types";
 import { defaultUser } from "../helpers/defaults";
+import { postData } from "../lib/request";
 
 interface iLoginProps {
   onCancel: () => void;
@@ -30,24 +30,28 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
   const handleOnChangePassword = (event: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(event.target.value);
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
+  const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    console.log("submitted");
-
-    if (login === "Serwis" && password === "BlueSerwis") {
-      hmi?.handleLogin({
-        id: 1,
-        login,
-        password,
-        level: Role.Service,
-        name: "Blue",
-        surname: "Serwis",
+    if (login && password) {
+      postData("/api/login", { login, password }).then((data) => {
+        if (data.status === "200") {
+          const { id, login, password, level, name, surname } = data.user;
+          hmi?.handleLogin({
+            id,
+            login,
+            password,
+            level,
+            name,
+            surname,
+          });
+          onCancel();
+        } else {
+          setValidationMessage("Błędny login lub hasło");
+        }
       });
-      onCancel();
     } else {
-      setValidationMessage("Błędny login lub hasło");
-      return;
+      setValidationMessage("Nie wpisano wszystkich danych");
     }
   };
 
