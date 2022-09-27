@@ -3,11 +3,16 @@ interface ILoginData {
   password: string;
 }
 
-export async function postData(url: string = "", data: ILoginData) {
+export async function loginUser(url: string = "", data: ILoginData) {
   const response = await fetch(url, {
     method: "POST",
     credentials: "same-origin",
     body: JSON.stringify(data),
   });
+  return response.json();
+}
+
+export async function getRecipes(url: string) {
+  const response = await fetch(url);
   return response.json();
 }
