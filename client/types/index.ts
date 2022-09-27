@@ -21,6 +21,14 @@ export interface IMessage {
   type: MessageType;
 }
 
+export interface IRecipe {
+  id: number;
+  name: string;
+  value1: number;
+  value2: number;
+  value3: string;
+}
+
 export enum Role {
   Operator = "Operator",
   Mainteance = "Mainteance",
@@ -41,4 +49,5 @@ export enum ScreenName {
   Settings = "Ustawienia",
   Statistics = "Statystyki",
   Messages = "Wiadomości",
+  Recipes = "Receptury",
 }
