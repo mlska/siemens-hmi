@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import { StoreContext } from "../store/StoreProvider";
 import { defaultUser } from "../helpers/defaults";
-import { postData } from "../lib/request";
+import { loginUser } from "../lib/request";
 
 interface iLoginProps {
   onCancel: () => void;
@@ -34,7 +34,7 @@ const LeftMenu: FunctionComponent<iLoginProps> = ({
     event.preventDefault();
 
     if (login && password) {
-      postData("/api/login", { login, password }).then((data) => {
+      loginUser("/api/login", { login, password }).then((data) => {
         if (data.status === "200") {
           const { id, login, password, level, name, surname } = data.user;
           hmi?.handleLogin({
