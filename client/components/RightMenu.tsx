@@ -4,6 +4,7 @@ import { AiOutlineHome } from "react-icons/Ai";
 import { FiAlertTriangle } from "react-icons/fi";
 import { FiSettings } from "react-icons/fi";
 import { IoMdStats } from "react-icons/io";
+import { CgNotes } from "react-icons/cg";
 import type { IconType } from "react-icons";
 
 import { Link, useLocation } from "react-router-dom";
@@ -26,6 +27,7 @@ const RightMenu: FunctionComponent<RightMenuProps> = () => {
     { icon: FiSettings, caption: "Ustawienia", path: "/settings" },
     { icon: IoMdStats, caption: "Statystyki", path: "/statistics" },
     { icon: FiAlertTriangle, caption: "Wiadomości", path: "/messages" },
+    { icon: CgNotes, caption: "Receptury", path: "/recipes" },
   ];
 
   const NavComponent = navigations.map((element: INavElement) => {
