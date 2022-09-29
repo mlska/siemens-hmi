@@ -13,6 +13,7 @@ const Settings: FC<ISettingsProps> = () => {
   const NavigationComponent = contents.map((element) => {
     return (
       <button
+        key={element}
         className={`p-4 text-white capitalize ${
           content === element ? "bg-blue-800" : "bg-blue-600"
         } rounded-xl`}
