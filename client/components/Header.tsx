@@ -85,7 +85,6 @@ const Header = () => {
         className={`flex p-3 items-center ${
           hmi?.warnings.length && !hmi?.alarms.length && "text-yellow-400"
         } ${hmi?.alarms.length && "animate-pulse text-red-900"}`}
-        onClick={() => console.log("clicked")}
         to={"/messages"}
       >
         <FiAlertTriangle className="text-2xl" />
