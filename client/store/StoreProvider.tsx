@@ -23,13 +23,13 @@ interface iContext {
   warnings: Array<IMessage>;
   screenName: string;
   handleScreenName: (screenName: ScreenName) => void;
+  recipes: Array<IRecipe>;
+  handleRecipes: () => void;
 }
 
 export const StoreContext = createContext<iContext | undefined>(undefined);
 
-const URL = "http://localhost:3001";
-
-const socket: Socket = io(URL);
+const socket: Socket = io(`${process.env.NEXT_PUBLIC_NODES7_URL}`);
 
 interface Props {
   children: ReactNode;
@@ -45,15 +45,8 @@ const StoreProvider: FC<Props> = ({ children }) => {
   const [recipes, setRecipes] = useState<Array<IRecipe>>([]);
 
   useEffect(() => {
-    socket.on("data", (data) => {
-      setVariables(data);
-    });
-    getRecipes("/api/recipes").then((data) => {
-      if (data.status === "200") {
-        console.log(data.recipes);
-        setRecipes(data.recipes);
-      }
-    });
+    setVariablesListener();
+    handleRecipes();
   }, []);
 
   useEffect(() => {
@@ -77,6 +70,21 @@ const StoreProvider: FC<Props> = ({ children }) => {
     setScreenName(screenName);
   };
 
+  const setVariablesListener = () => {
+    socket.on("data", (data) => {
+      setVariables(data);
+    });
+  };
+
+  const handleRecipes = () => {
+    getRecipes("/api/recipes").then((data) => {
+      if (data.status === "200") {
+        console.log(data.recipes);
+        setRecipes(data.recipes);
+      }
+    });
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -90,6 +98,8 @@ const StoreProvider: FC<Props> = ({ children }) => {
         warnings,
         screenName,
         handleScreenName,
+        recipes,
+        handleRecipes,
       }}
     >
       {children}
